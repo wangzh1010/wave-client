@@ -1,0 +1,23 @@
+@import 'common.scss';
+
+.wrapper {
+    width: 100vw;
+    height: calc(100vh - 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+
+    input {
+        width: 50vw;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 50vw;
+        height: 30px;
+        border-radius: 5px;
+        color: #ffffff;
+        background-color: #2d8cf0;
+    }
+}

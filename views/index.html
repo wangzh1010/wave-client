@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <template v-if="!isLogin">
+      <login @register="register" @login="login" @exit="winExit" @minimize="winMinimize" @tools="showDevTools" />
+    </template>
+    <template v-else>
+      <div class="topbar">
+        <div class="wrapper">
+          <div class="profile" @click.stop="toggleTopMenu"><img :src="portrait" alt=""></div>
+          <div class="btn-group">
+            <button class="setting" type="button" @click.stop="toggleSetting" title="主菜单"></button>
+            <button class="win-min" type="button" @click.stop="winMinimize" title="最小化"></button>
+            <button class="win-max" type="button" @click.stop="winMaximize" title="最大化"></button>
+            <button class="win-close" type="button" @click.stop="winExit" title="关闭"></button>
+          </div>
+        </div>
+        <div class="menu" v-bind:class="{hide:!topMenuShow}">
+          <div class="my-info">
+            <a href="javascript:;" @click="showUserInfo"><strong class="nickname">{{nickname}}</strong></a>
+            <a href="javascript:;"><span class="signature">{{signature}}</span></a>
+          </div>
+          <ul>
+            <li> 切换 </li>
+            <li @click="logout"> 退出 </li>
+          </ul>
+        </div>
+        <div class="setting-menu" :class="{hide : !showSetting}">
+          <ul>
+            <li>窗口置顶</li>
+          </ul>
+          <ul>
+            <li>设置</li>
+            <li>帮助</li>
+            <li>升级</li>
+            <li @click.stop="showDevTools">开发者工具</li>
+          </ul>
+        </div>
+      </div>
+      <div class="wrapper">
+        <div class="friends">
+          <ul>
+            <li v-for="friend in friends" :class="{current:friend.uid === fid}" @click="changeChatFriend(friend.uid)">
+              <img class="profile" :src="friend.portrait" alt="">
+              <div class="wrap">
+                <em>{{friend.nickname}}</em>
+                <span>{{friend.message}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div v-if="fid" class="chat">
+          <div class="current">{{fnickname}}</div>
+          <div class="chat-list">
+            <ul>
+              <li v-for="msg in messages" class="message" :class="{right:msg.from === uid}">
+                <img class="profile" :src="msg.from === uid ? portrait : fportrait" alt="">
+                <p>{{msg.chat}}</p>
+              </li>
+            </ul>
+          </div>
+          <div class="editor">
+            <div class="toolbar">
+              <button @click="sendImage">
+                <Icon type="ios-image" /></button>
+            </div>
+            <div class="words">
+              <textarea @contextmenu="showMenu" v-model="message"></textarea>
+            </div>
+            <div class="send-wrapper"><button class="send-btn" type="button" @click="sendMessage">发送</button></div>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</body>
+
+</html>

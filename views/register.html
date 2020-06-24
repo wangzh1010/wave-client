@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <top-bar @exit="exit" @tools="showDevTools">
+            <span class="caption" slot="caption">注册</span>
+            <button class="win-tools" type="button" @click="showDevTools" title="开发者工具"></button>
+            <button class="win-close" type="button" @click="exit" title="关闭"></button>
+        </top-bar>
+        <div class="wrapper">
+            <input type="text" v-model="username" placeholder="请输入11位数字作为登录名">
+            <input type="password" v-model="password" placeholder="请输入密码">
+            <input type="password" v-model="confirmPassword" placeholder="请确认密码">
+            <button @click="register">确定</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Userinfo</title>
+</head>
+
+<body>
+    <div id="app">
+        <top-bar>
+            <span slot="caption"></span>
+            <button class="win-tools" type="button" @click="showDevTools" title="开发者工具"></button>
+            <button class="win-close" type="button" @click="exit" title="关闭"></button>
+        </top-bar>
+        <div class="wrapper">
+            <a href="javascript:;" @click="changePortrait"><img :src="portrait" alt=""></a>
+        </div>
+        <div class="userinfo">
+            <div><i>账号</i><span>{{uid}}</span></div>
+            <div><i>昵称</i><input type="text" v-model="nickname"></div>
+            <div><i>签名</i><textarea rows="3" v-model="signature"></textarea></div>
+        </div>
+        <button class="btn save-btn" @click="saveUserinfo">保存</button>
+    </div>
+</body>
+
+</html>

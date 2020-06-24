@@ -1,0 +1,60 @@
+@import 'common.scss';
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0px;
+    position: relative;
+
+    a {
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+    }
+}
+
+.userinfo {
+    padding: 0 12px;
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        line-height: 30px;
+        margin-bottom: 10px;
+
+        i {
+            margin-right: 8px;
+        }
+    }
+
+    input {
+        width: 80vw;
+    }
+
+    textarea {
+        width: 80vw;
+        padding: 4px 8px;
+
+        &::-webkit-scrollbar {
+            width: 0px;
+            height: 0px;
+        }
+    }
+}
+
+.save-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    width: 100px;
+    transform: translateX(-50%);
+}
